@@ -22,8 +22,7 @@ export class AuthService {
                     hashPassword: hashPassword
                 }
             })
-            delete user.hashPassword
-            return user
+            return this.signUpToken(user.id, user.email)
         } catch (error) {
             if (error instanceof PrismaClientKnownRequestError) {
                 if (error.code === 'P2002') {
